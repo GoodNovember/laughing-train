@@ -1,0 +1,8 @@
+{% for piece in data.widget._pieces %}
+{%- set blogPost = piece -%}
+  <div class="blog-post">
+    <pre>
+        <code>{{ blogPost | json }}</code>
+    </pre>
+  </div>
+{% endfor %}

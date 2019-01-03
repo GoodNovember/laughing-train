@@ -1,0 +1,26 @@
+<a 
+class="navigation__link{% if data.widget.linkDisplayMode %} navigation__link--display-mode-{{ data.widget.linkDisplayMode }}{% endif %}" 
+
+{% if data.widget.linkType === "external" %}
+href="{{ data.widget.linkHref }}"
+{% endif %}
+
+{% if data.widget.linkType === "local" %}
+href="{{ data.widget._linkPage._url }}"
+{% endif %}
+
+{% if data.widget.linkOpenMode === "newTab" %}
+target="_blank"
+{% endif %}
+
+>
+{% if (data.widget.linkLabel) and ( data.widget.linkType === "local") %}
+{{ data.widget.linkLabel }}
+{% elif (data.widget.linkType === "local") %}
+{{ data.widget._linkPage.title }}
+{% elif (data.widget.linkLabel) and (data.widget.linkType === "external") %}
+{{ data.widget.linkLabel }}
+{% else %}
+{{ data.widget.linkHref }}
+{% endif %}
+</a>

@@ -1,0 +1,10 @@
+{% import "macros/utils.html" as utils %}
+
+<div class="archipelago archipelago--two-columns">
+  <div class="archipelago__island archipelago__island--two-columns archipelago__island--first">
+    {{ utils.column(data.widget, 'one', 'one-half') }}
+  </div>
+  <div class="archipelago__island archipelago__island--two-columns archipelago__island--last">
+    {{ utils.column(data.widget, 'two', 'one-half') }}
+  </div>
+</div>

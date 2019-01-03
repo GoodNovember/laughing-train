@@ -1,0 +1,49 @@
+{% extends "museumPage.html" %}
+
+{% block title %} Journal - {{ data.piece.title }} {% endblock %}
+{% block museumPageTitle %}{{ data.piece.title }}{% endblock %}
+{% block museumPageSubtitle %}{% endblock %}
+
+{% block museumPageContent %}
+<div class="blog-post blog-post--full">
+    <div class="blog-post__publication-date">Published on {{ data.piece.publishedAt | date('MMMM Do, YYYY') }}</div>
+    <div class="blog-post__body">
+    {{ 
+        apos.area(data.piece, 'body', {
+            widgets:{
+                'apostrophe-rich-text':{}
+            }
+        })
+    }}
+    </div>
+    {%- set author = data.piece._person -%}
+    {%- if author -%}
+    {%- set person = author -%}
+    {%- set thumbnail = apos.images.first(person.thumbnail) -%}
+    <div class="person person--type-author">
+        {% if thumbnail %}
+            <div class="person__thumbnail" style="background-image:url('{{ apos.attachments.url(thumbnail, { size:'one-sixth' }) }}')"></div>
+        {% endif %}
+            <div class="person__info">
+        {% if person._url %}<a href="{{ person._url }}">{% endif %}
+            <div class="person__name">{{ person.title }}</div>
+        {% if person._url %}</a>{% endif %}
+        {% if person.jobTitle %}
+            <div class="person__job-title">{{ person.jobTitle }}</div>
+        {% endif %}
+        {% if person.shortBlurb %}
+            <div class="person__short-blurb">{{ person.shortBlurb }}</div>
+        {% endif %}
+            <div class="person__contact">
+                {% if person.phone %}
+                    <a class="person__phone" href="tel:{{ person.phone }}"><span class="fa fa-phone"></span> {{ person.phone }}</a>
+                {% endif %}
+                {% if person.email %}
+                    <a class="person__email" href="mailto:{{ person.email }}"><span class="fa fa-envelope"></span> {{ person.email }}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {%- endif -%}
+</div>
+{% endblock %}

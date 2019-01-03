@@ -1,0 +1,10 @@
+{% extends "museumPage.html" %}
+
+{% block museumPageContent %}
+<div>
+<div>Event Item</div>
+<pre>
+    <code>{{ data.piece | json('\t') }}</code>
+</pre>
+</div>
+{% endblock museumPageContent %}

@@ -1,0 +1,112 @@
+@import "../colors.less";
+
+.navigation {
+
+    color: white;
+    padding: 1rem;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+
+    &--location-top{
+
+        background: @bronze-olive;
+
+        .museum-app-root--state-logged-in & {
+
+            > .apos-area .apos-area-widgets{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                width: 100%;
+                align-items: center;
+            }
+        }
+    
+        .museum-app-root--state-logged-out & {
+    
+            .apos-area {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                align-items: center;
+            }
+    
+        }
+    
+    }// location-top end
+    
+    &--location-bottom{
+
+        background: @bright-sun;
+
+        .museum-app-root--state-logged-in & {
+
+            > .apos-area > .apos-area-widgets{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+        }
+    
+        .museum-app-root--state-logged-out & {
+    
+            > .apos-area {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+    
+        }
+
+    }// location-bottom end
+
+    &__section{
+        padding: 0.5rem;
+        background: peru;
+        margin: 0.5rem;
+        min-width: 8rem;
+        &--location-top{
+            padding: 0;
+        }
+    }// section end
+
+    &__section-label{
+        padding: 1rem;
+        color: white;
+        text-align: center;
+        font-size: 1.5rem;
+    } // section title end
+
+    &__link{
+
+        .apos-schema-group-inner &{
+            background: #eee;
+            margin: .5rem;
+            padding: 1rem;
+        }
+
+        &--display-mode{
+
+            &-button{
+                display: block;
+                border: 1px solid black;
+                padding: 1em;
+                background: white;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+            } // button display mode end
+
+            &-text-link{
+                color: green;
+            } // text-link display mode end
+
+        }// display-mode modifier end
+    }// link end
+
+}// navigation end

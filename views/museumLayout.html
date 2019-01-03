@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<div class="museum-app-root {% if data.user %} museum-app-root--state-logged-in {% else %} museum-app-root--state-logged-out{% endif %}">
+    {{
+        apos.singleton(data.global, 'top_navigation', 'museum-navigation',{
+            addLabel:"Add Top Navigation",
+            location:"top",
+            controls:{
+                movable:false
+            }
+        })
+    }}
+    {%- block museumMain -%}
+    {%- endblock museumMain -%}
+</div>
+{% endblock main %}

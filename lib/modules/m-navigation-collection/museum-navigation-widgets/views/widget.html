@@ -1,0 +1,26 @@
+<div class="navigation navigation--location-{{ data.options.location }}">
+    {% if (data.options.location === "top") %}
+    {{
+        apos.singleton(data.widget, "sectionContentArea","museum-navigation-section",{
+            blockLevelControls:true,
+            hideLabel:true,
+            location:'top',
+            controls:{
+                movable:false
+            }
+        })
+    }}
+    {% elif (data.options.location === "bottom") %}
+    {{
+        apos.area(data.widget, "sectionContentArea",{
+            blockLevelControls:true,
+            widgets:{
+                "museum-navigation-section":{
+                    location:'bottom'
+                }
+            }
+        })
+    }}
+
+    {% endif %}
+</div>

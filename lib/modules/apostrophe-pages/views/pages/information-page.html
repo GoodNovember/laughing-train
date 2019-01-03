@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<div class="museum-app-root {% if data.user %} museum-app-root--state-logged-in {% else %} museum-app-root--state-logged-out{% endif %}">
+    {{
+        apos.singleton(data.global, 'top_navigation', 'museum-navigation',{
+            addLabel:"Add Top Navigation",
+            location:"top",
+            controls:{
+                movable:false
+            }
+        })
+    }}
+    <div class="page page--type-informational">
+        <div class="page__masthead">
+            <div class="page__title">{{ data.page.title }}</div>
+            <div class="page__subtitle">
+            {{ 
+                apos.singleton(data.page, 'subtitle', 'apostrophe-rich-text', {
+                    addLabel:"Add a Subtitle to the page.",
+                    editLabel:"Edit page Subtitle",
+                    controls:{
+                        movable:false,
+                        position:'bottom-left'
+                    }
+                })
+            }}
+            </div>
+        </div>
+        <div class="page__content">
+        {%- block museumMain -%}
+        {{
+            apos.area(data.page, 'content', {
+                widgets:{
+                    'apostrophe-rich-text':{
+                        toolbar:['Bold', 'Italic', 'Styles', 'Split']
+                    },
+                    'museum-navigation-link':{},
+                    'people':{}
+                }
+            })
+        }}
+        {%- endblock museumMain -%}
+        </div>
+        <div class="page__spacer"></div>
+        {{
+            apos.singleton(data.global, 'bottom_navigation', 'museum-navigation',{
+                addLabel:"Add Bottom Navigation",
+                location:"bottom",
+                controls:{
+                    movable:false
+                }
+            })
+        }}
+        <div class="page__footer">
+        {{ 
+            apos.singleton(data.global, 'footer', 'apostrophe-rich-text', {
+                toolbar: [ 'Bold', 'Italic', 'Styles', 'Link', 'Unlink' ],
+                editLabel: "Edit Global Footer Text",
+                addLabel:"Add Global Footer Text",
+                controls:{
+                    movable:false,
+                    removable:false,
+                    position:'bottom-left'
+                }
+            })
+        }}
+        </div>
+    </div>
+</div>
+{% endblock main %}

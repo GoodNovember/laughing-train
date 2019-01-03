@@ -4,7 +4,8 @@
   "description": "Minimal Apostrophe Boilerplate",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "monitor": "monitor"
   },
   "repository": {
     "type": "git",
@@ -13,10 +14,23 @@
   "author": "P'unk Avenue",
   "license": "MIT",
   "dependencies": {
-    "apostrophe": "^2.47.0"
+    "apostrophe": "^2.47.0",
+    "apostrophe-headless": "^2.6.0",
+    "apostrophe-monitor": "^2.0.2",
+    "async": "^2.6.1",
+    "lodash": "^4.17.11",
+    "moment": "^2.23.0",
+    "nodemon": "^1.18.8"
   },
   "nodemonConfig": {
-    "verbose": true,
+    "delay": 2500,
+    "legacyWatch": true,
+    "verbose": false,
+    "watch": [
+      "app.js",
+      "lib/modules",
+      "views"
+    ],
     "ignore": [
       "lib/modules/*/public/js/*.js",
       "locales/*.json",

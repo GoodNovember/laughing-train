@@ -1,0 +1,51 @@
+@import "../colors.less";
+
+.page{
+    
+    // background: pink;
+    background: @mercury;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+
+    &__masthead{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 10rem;
+        padding: 1rem;
+        text-align: center;
+    } // masthead end
+
+    &__spacer{
+        flex-grow: 1;
+    } // spacer end
+
+    &__footer{
+        background: teal;
+        color: white;
+        padding: 1em;
+        flex-shrink: 0;
+    } // footer end
+
+    &__title{
+        font-size: 3rem;
+        font-weight: bolder;
+        text-align: center;
+        padding: 1rem;
+    } // title end
+
+    &__subtitle{
+        font-size: 2rem;
+        text-align: center;
+        padding-top: 1rem;
+    } // subtitle end
+
+    &__content{
+        max-width: 50rem;
+        margin: 0 auto;
+        padding: .5rem;
+    }// content end
+
+}// page end

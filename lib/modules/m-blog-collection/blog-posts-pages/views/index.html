@@ -1,0 +1,30 @@
+{% extends "museumPage.html" %}
+{% block title %}{{ data.page.title }}{% endblock %}
+
+{% block museumPageContent %}
+
+  {%- macro here(changes) -%}
+    {{ data.page._url | build({
+      year: data.query.year
+    }, changes) }}
+  {%- endmacro -%}
+
+  <ul class="apos-blog-filters">
+    <li><a href="{{ here({ year: null }) }}" class="apos-blog-filters-link">All years</a></li>
+    {% for year in data.piecesFilters.year %}
+      <li><a href="{{ here({ year: year.value }) }}" class="apos-blog-filters-link">{{ year.label }}</a></li>
+    {% endfor %}
+  </ul>
+
+  <div class="blog-post-list">
+    {%- for piece in data.pieces -%}
+        <div class="blog-post blog-post--list-item">
+            <a class="blog-post__title" href="{{ piece._url }}">{{ piece.title }}</a>
+            <div class="blog-post__date">Published On {{ piece.publishedAt | date('MMMM Do, YYYY') }}</div>
+            <div class="blog-post__summary"> {{ piece.summary }} </div>
+        </div>
+    {%- endfor -%}
+  </div>
+  {% import 'apostrophe-pager:macros.html' as pager with context %}
+  {{ pager.render({ page: data.currentPage, total: data.totalPages }, data.url) }}
+{% endblock %}

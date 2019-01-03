@@ -1,0 +1,19 @@
+<div class="navigation__section navigation__section--location-{{ data.options.location }}">
+    {% if (data.widget.sectionLabel) and  (data.widget.sectionLabel.length > 0) %}
+    <div class="navigation__section-label">
+    {{ data.widget.sectionLabel }}
+    </div>
+    {% endif %}
+    <div>
+    {{
+        apos.area(data.widget, 'sectionLinks',{
+            blockLevelControls:true,
+            widgets:{
+                "museum-navigation-link":{
+                    edit:false
+                }
+            }
+        })
+    }}
+    </div>
+</div>

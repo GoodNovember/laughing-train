@@ -1,0 +1,23 @@
+{% extends "museumPage.html" %}
+
+{% block title %} Team Member: {{ data.piece.title }} - {{ data.piece.jobTitle }}{% endblock %}
+{% block museumPageTitle %}{{ data.piece.title }}{% endblock %}
+{% block museumPageSubtitle %}{{ data.piece.jobTitle }}{% endblock %}
+
+{% block museumPageContent %}
+<div class="person person--full">
+    {%- set thumbnail = apos.images.first(data.piece.thumbnail) -%}
+    {%- if thumbnail -%}
+      <div class="person__thumbnail person__thumbnail--full" style="background-image:url('{{ apos.attachments.url(thumbnail, { size:'one-sixth' }) }}')"></div>
+    {%- endif -%}
+    <div class="person__body">
+    {{
+        apos.area(data.piece, "body", {
+            widgets:{
+                'apostrophe-rich-text':{}
+            }
+        })
+    }}
+    </div>
+</div>
+{% endblock %}

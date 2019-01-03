@@ -1,0 +1,55 @@
+.person{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 0;
+
+    &--full{
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    a{
+        text-decoration: none;
+    }
+
+    &__body{
+        padding: .5rem 0;
+    }
+
+    &__info{
+        margin-left: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    &__name{
+        font-size: 3rem;
+    }
+    &__job-title{
+        font-size: 2rem;
+    }
+    &__short-blurb{
+        padding: 0.5rem 0;
+    }
+    &__thumbnail{
+        flex-shrink: 0;
+        height: 8rem;
+        width: 8rem;
+        background-position: center;
+        background-size: cover;
+        border-radius: 100%;
+        box-shadow: 0 0 0 1rem black;
+        margin: 1rem;
+        &--full{
+            width: 20rem;
+            height: 20rem;
+            margin-bottom: 3rem;
+        }
+    }
+}
+
+.people-list{
+    &__person{
+
+    }
+}

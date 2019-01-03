@@ -1,7 +1,13 @@
 var path = require('path');
+const apos = require('apostrophe')
 
-var apos = require('apostrophe')({
+const viewsFolderFallback = path.join(__dirname, 'views')
+
+module.exports = apos({
+  root: module,
   shortName: 'negahc-apostrophe-website',
+
+  nestedModuleSubdirs:true,
 
   // See lib/modules for basic project-level configuration of our modules
   // responsible for serving static assets, managing page templates and
@@ -20,12 +26,39 @@ var apos = require('apostrophe')({
     // If a template is not found somewhere else, serve it from the top-level
     // `views/` folder of the project
 
-    'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') },
+    'apostrophe-templates': { viewsFolderFallback },
 
     // Custom Widgets:
 
-    'link-widgets': {},
-    'page-link-widgets':{},
+    'apostrophe-admin-bar':{},
+
+    'museum-theme':{},
+    
+    'museum-one-column-widgets':{},
+    'museum-two-column-widgets':{},
+    'museum-three-column-widgets':{},
+
+    'museum-navigation-widgets':{},
+    'museum-navigation-link-widgets':{},
+    'museum-navigation-section-widgets':{},
+
+    'people':{},
+    'people-widgets':{},
+    'people-pages':{},
+    
+    'blog-posts':{},
+    'blog-posts-widgets':{},
+    'blog-posts-pages':{},
+
+    'events':{},
+    'event-types':{},
+    'events-pages':{},
+
+    'library-items':{},
+    'library-collections':{},
+    'library-items-pages':{},
+
+    'standards':{},
 
   }
-});
+})

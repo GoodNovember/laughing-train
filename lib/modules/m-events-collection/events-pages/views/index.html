@@ -1,0 +1,16 @@
+{% extends "museumPage.html" %}
+{% block title %}{{ data.page.title }}{% endblock %}
+
+{% block museumPageContent %}
+  <div class="event-list">
+  {% for piece in data.pieces %}
+    <div class="event">
+      <div>
+        <a class="event__title" href="{{ piece._url }}">{{ piece.title }}</a>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+  {% import 'apostrophe-pager:macros.html' as pager with context %}
+  {{ pager.render({ page: data.currentPage, total: data.totalPages }, data.url) }}
+{% endblock %}

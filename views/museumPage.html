@@ -1,0 +1,53 @@
+{%- extends "museumLayout.html" -%}
+
+{%- block museumMain -%}
+    <div class="page">
+        <div class="page__masthead">
+            <div class="page__title">
+                {%-block museumPageTitle -%}{{ data.page.title }}{%- endblock museumPageTitle -%}
+            </div>
+            <div class="page__subtitle">
+                {%- block museumPageSubtitle -%}
+                {{ 
+                    apos.singleton(data.page, 'subtitle', 'apostrophe-rich-text', {
+                        addLabel:"Add a Subtitle to the page.",
+                        editLabel:"Edit page Subtitle",
+                        controls:{
+                            movable:false,
+                            position:'bottom-left'
+                        }
+                    })
+                }}
+                {%- endblock museumPageSubtitle -%}
+            </div>
+        </div>
+        <div class="page__content">
+            {%- block museumPageContent -%}
+            {%- endblock museumPageContent -%}
+        </div>
+        <div class="page__spacer"></div>
+            {{
+                apos.singleton(data.global, 'bottom_navigation', 'museum-navigation',{
+                    addLabel:"Add Bottom Navigation",
+                    location:"bottom",
+                    controls:{
+                        movable:false
+                    }
+                })
+            }}
+        <div class="page__footer">
+            {{ 
+                apos.singleton(data.global, 'footer', 'apostrophe-rich-text', {
+                    toolbar: [ 'Bold', 'Italic', 'Styles', 'Link', 'Unlink' ],
+                    editLabel: "Edit Global Footer Text",
+                    addLabel:"Add Global Footer Text",
+                    controls:{
+                        movable:false,
+                        removable:false,
+                        position:'bottom-left'
+                    }
+                })
+            }}
+        </div>
+    </div>
+{%- endblock -%}

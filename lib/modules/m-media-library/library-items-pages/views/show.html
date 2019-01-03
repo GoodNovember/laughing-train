@@ -1,0 +1,32 @@
+{% extends "museumPage.html" %}
+
+{% set item = data.piece %}
+
+{% block title %}{{ item.title }}{% endblock %}
+{% block museumPageTitle %}{{ item.title }}{% endblock %}
+{% block museumPageSubtitle %}{% endblock %}
+
+{% block museumPageContent %}
+<div class="library-item"/>
+    <div class="library-item__media">
+    {{ 
+        apos.area(data.piece, "media", {
+            limit:1,
+            widgets:{
+                'apostrophe-video':{}
+            }
+        })
+    }}
+    </div>
+    <div class="library-item__description">
+    {{
+        apos.area(data.piece, 'description', {
+            widgets:{
+                'apostrophe-rich-text':{},
+                'apostrophe-images':{}
+            }
+        })
+    }}
+    </div>
+</div>
+{% endblock museumPageContent %}

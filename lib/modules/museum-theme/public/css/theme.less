@@ -1,0 +1,34 @@
+@import "colors.less";
+@import "variables.less";
+@import "fonts.less";
+
+@import "components/archipelago.less";
+@import "components/navigation.less";
+@import "components/page.less";
+@import "components/blog-post.less";
+
+@import "components/person.less";
+
+@import "components/shameful_dirty_hacks.less";
+
+.museum-app-root{
+    // height: 100vh;
+    background: @mercury;
+    display: flex;
+    flex-direction: column;
+    font-family: @main-font-family;
+    letter-spacing: 1.5px;
+    &--state-logged-in{
+        padding-top: 5.5rem;
+        padding-bottom: 4rem;
+        background-image: url("@{theme-img}/construction.png");
+        min-height: 100vh; // makes for an easier editing interface
+    }
+    &--state-logged-out{
+        margin: 0;
+        height: 100vh; // makes short pages look nicer.
+    }
+    & .page{
+        flex-grow: 1;
+    } // page end
+} // museum-app-root end
